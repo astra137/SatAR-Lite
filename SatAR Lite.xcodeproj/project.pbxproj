@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C231D2E23FA39EB00ECC935 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C231D2D23FA39EB00ECC935 /* Cache.swift */; };
+		8C231D3223FA7CAC00ECC935 /* Date-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C231D3123FA7CAC00ECC935 /* Date-Extensions.swift */; };
+		8C231D3623FAA6EB00ECC935 /* SatelliteListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C231D3523FAA6EB00ECC935 /* SatelliteListTableViewController.swift */; };
 		8C4A405223F7C99F001DE698 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4A405123F7C99F001DE698 /* AppDelegate.swift */; };
-		8C4A405423F7C99F001DE698 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C4A405323F7C99F001DE698 /* art.scnassets */; };
 		8C4A405623F7C99F001DE698 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4A405523F7C99F001DE698 /* ViewController.swift */; };
 		8C4A405923F7C99F001DE698 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C4A405723F7C99F001DE698 /* Main.storyboard */; };
 		8C4A405B23F7C9A1001DE698 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C4A405A23F7C9A1001DE698 /* Assets.xcassets */; };
@@ -37,9 +39,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8C231D2D23FA39EB00ECC935 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		8C231D3123FA7CAC00ECC935 /* Date-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date-Extensions.swift"; sourceTree = "<group>"; };
+		8C231D3523FAA6EB00ECC935 /* SatelliteListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SatelliteListTableViewController.swift; sourceTree = "<group>"; };
 		8C4A404E23F7C99F001DE698 /* SatAR Lite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SatAR Lite.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C4A405123F7C99F001DE698 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8C4A405323F7C99F001DE698 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		8C4A405523F7C99F001DE698 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8C4A405823F7C99F001DE698 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8C4A405A23F7C9A1001DE698 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -80,6 +84,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C231D3023FA7C9C00ECC935 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8C4A408123F7CA58001DE698 /* String-Extensions.swift */,
+				8C231D3123FA7CAC00ECC935 /* Date-Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		8C4A404523F7C99F001DE698 = {
 			isa = PBXGroup;
 			children = (
@@ -103,14 +116,15 @@
 		8C4A405023F7C99F001DE698 /* SatAR Lite */ = {
 			isa = PBXGroup;
 			children = (
+				8C231D3023FA7C9C00ECC935 /* Extensions */,
+				8C231D2D23FA39EB00ECC935 /* Cache.swift */,
 				8C4A405123F7C99F001DE698 /* AppDelegate.swift */,
-				8C4A405323F7C99F001DE698 /* art.scnassets */,
 				8C4A405523F7C99F001DE698 /* ViewController.swift */,
 				8C4A405723F7C99F001DE698 /* Main.storyboard */,
 				8C4A405A23F7C9A1001DE698 /* Assets.xcassets */,
 				8C4A405C23F7C9A1001DE698 /* LaunchScreen.storyboard */,
 				8C4A405F23F7C9A1001DE698 /* Info.plist */,
-				8C4A408123F7CA58001DE698 /* String-Extensions.swift */,
+				8C231D3523FAA6EB00ECC935 /* SatelliteListTableViewController.swift */,
 			);
 			path = "SatAR Lite";
 			sourceTree = "<group>";
@@ -200,7 +214,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1130;
-				ORGANIZATIONNAME = Mac;
+				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					8C4A404D23F7C99F001DE698 = {
 						CreatedOnToolsVersion = 11.3.1;
@@ -243,7 +257,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C4A405423F7C99F001DE698 /* art.scnassets in Resources */,
 				8C4A405E23F7C9A1001DE698 /* LaunchScreen.storyboard in Resources */,
 				8C4A405B23F7C9A1001DE698 /* Assets.xcassets in Resources */,
 				8C4A405923F7C99F001DE698 /* Main.storyboard in Resources */,
@@ -272,7 +285,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C4A408223F7CA58001DE698 /* String-Extensions.swift in Sources */,
+				8C231D2E23FA39EB00ECC935 /* Cache.swift in Sources */,
 				8C4A405623F7C99F001DE698 /* ViewController.swift in Sources */,
+				8C231D3223FA7CAC00ECC935 /* Date-Extensions.swift in Sources */,
+				8C231D3623FAA6EB00ECC935 /* SatelliteListTableViewController.swift in Sources */,
 				8C4A405223F7C99F001DE698 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -446,6 +462,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XNTSB5R23W;
 				INFOPLIST_FILE = "SatAR Lite/Info.plist";
@@ -455,6 +472,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "me.starburn.SatAR-Lite";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -464,6 +482,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XNTSB5R23W;
 				INFOPLIST_FILE = "SatAR Lite/Info.plist";
@@ -473,6 +492,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "me.starburn.SatAR-Lite";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

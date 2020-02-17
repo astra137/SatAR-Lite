@@ -1,24 +1,15 @@
-//
-//  ViewController.swift
-//  SatAR Lite
-//
-//  Created by Mac on 2/14/20.
-//  Copyright © 2020 Mac. All rights reserved.
-//
-
 import UIKit
 import SceneKit
 import ARKit
 import CoreLocation
-import SatelliteKit
 
 class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDelegate {
     
     var locationManager = CLLocationManager()
     var userLocation: CLLocation!
     
-    var node: SCNNode!
-    var sat: Satellite!
+    var propagatorTimer: Timer!
+    var satelliteNodes: [Int:SCNNode] = [:]
     
     @IBOutlet var sceneView: ARSCNView!
     
@@ -47,6 +38,33 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         
         // Run the view's session
         sceneView.session.run(configuration)
+        
+        // Remove satellites in case they aren't tracked anymore
+        for (_, node) in satelliteNodes { node.removeFromParentNode() }
+        satelliteNodes.removeAll()
+        
+        // Create and attach nodes for tracked satellites
+        for (id, isTracking) in tracking {
+            if isTracking {
+                // SceneKit/AR coordinates are in meters
+                let plane = SCNPlane(width: 0.05, height: 0.05)
+                plane.firstMaterial!.diffuse.contents = "🛰".image()!
+                let node = SCNNode(geometry: plane)
+                node.constraints = [SCNBillboardConstraint()]
+                
+                // Save and attach node
+                satelliteNodes[id] = node
+                sceneView.scene.rootNode.addChildNode(node)
+            }
+        }
+        
+        // Update nodes every so often
+        propagatorTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
+            self.propagateAll()
+        }
+        
+        // Attempt immediate propagation when view appears
+        self.propagateAll()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -54,6 +72,41 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         
         // Pause the view's session
         sceneView.session.pause()
+        
+        // Stop propagating
+        propagatorTimer.invalidate()
+    }
+    
+    /// Propagates satellites to current time and updates nodes to match
+    func propagateAll() {
+        guard let location = self.userLocation else {
+            print("Skipping propagation: no location yet")
+            return
+        }
+        
+        if satelliteNodes.count == 0 {
+            print("Skipping propagation: nothing tracked")
+            return
+        }
+        
+        // Record time it takes to propagate
+        let now = Date()
+        let lat = location.coordinate.latitude
+        let lon = location.coordinate.longitude
+        
+        for (id, node) in satelliteNodes {
+            // Calculate next topocentric coord (south, east, up)
+            let topo = Cache.getTopo(noradId: id, date: now, lat: lat, lon: lon)
+            let distance = topo.magnitude()
+            
+            // Place node in world (east, up, south)
+            // Normalized to 1 meter from camera
+            node.position.x = Float(topo.y / distance)
+            node.position.y = Float(topo.z / distance)
+            node.position.z = Float(topo.x / distance)
+        }
+        
+        print("propagateAll: \(satelliteNodes.count) sats took \(Date().nanoseconds(from: now) / 1000) μs")
     }
     
     // MARK: - ARSCNViewDelegate
@@ -86,75 +139,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         }
     }
     
-    func makeBillboardNode(_ image: UIImage) -> SCNNode {
-        // SceneKit/AR coordinates are in meters
-        let plane = SCNPlane(width: 0.1, height: 0.1)
-        plane.firstMaterial!.diffuse.contents = image
-        let node = SCNNode(geometry: plane)
-        node.constraints = [SCNBillboardConstraint()]
-        return node
-    }
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
-            
-            if (node == nil) {
-                node = makeBillboardNode("🛰".image()!)
-                sceneView.scene.rootNode.addChildNode(node)
-            }
-            
-            if sat == nil {
-                let tle = try! TLE("BUGSAT 1",
-                                   "1 40014U 14033E   20046.14221677 -.00000307  00000-0 -21767-4 0  9991",
-                                   "2 40014  98.0475   4.5247 0031640 343.2517  16.7681 14.95391601308587")
-                
-                sat = Satellite(withTLE: tle)
-                print(sat.debugDescription())
-            }
-            
-            let now = Date().julianDate
-            let posInKms = sat.position(julianDays: now)
-            
-            let obs = LatLonAlt(
-                lat: location.coordinate.latitude,
-                lon: location.coordinate.longitude,
-                alt: 0)
-            
-            // Verified this function spits correct data out
-            print(eci2geo(julianDays: now, celestial: posInKms))
-            
-            // Temp func for getting topocentric coords
-            // Normalize satellite to 1 meter away
-            let top = eci2top_fixed(julianDays: now, satVector: posInKms, geoVector: obs)
-            node.worldPosition.z = Float(top.x / top.magnitude()) // South
-            node.worldPosition.x = Float(top.y / top.magnitude()) // East
-            node.worldPosition.y = Float(top.z / top.magnitude()) // Up
+            userLocation = location
         }
     }
-    
-    public func eci2top_fixed(julianDays: Double, satVector: Vector, geoVector: LatLonAlt) -> Vector {
-        let     latitudeRads = geoVector.lat * deg2rad
-        let     sinLatitude = sin(latitudeRads)
-        let     cosLatitude = cos(latitudeRads)
-        
-        let obsVector = geo2eci(julianDays: julianDays, geodetic: geoVector)
-        let obs2sat = satVector - obsVector
-        
-        let     siderealRads = siteMeanSiderealTime(julianDate: julianDays, geoVector.lon) * deg2rad
-        let     sinSidereal = sin(siderealRads)
-        let     cosSidereal = cos(siderealRads)
-        
-        let topS = +sinLatitude * cosSidereal * obs2sat.x +
-            sinLatitude * sinSidereal * obs2sat.y -
-            cosLatitude * obs2sat.z
-        
-        let topE = -sinSidereal * obs2sat.x +
-            cosSidereal * obs2sat.y
-        
-        let topZ = +cosLatitude * cosSidereal * obs2sat.x +
-            cosLatitude * sinSidereal * obs2sat.y +
-            sinLatitude * obs2sat.z
-        
-        return Vector(topS, topE, topZ)
-    }
 }
+

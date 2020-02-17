@@ -1,12 +1,7 @@
-//
-//  AppDelegate.swift
-//  SatAR Lite
-//
-//  Created by Mac on 2/14/20.
-//  Copyright © 2020 Mac. All rights reserved.
-//
-
 import UIKit
+
+/// TODO Magic global?
+var tracking: [Int:Bool] = [:]
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -34,6 +29,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        // Load TLEs
+        // TODO: better place to load this data?
+        Cache.loadAll { (error: Error?) in
+            guard error == nil else {
+                print("Error loading satellites")
+                print(error.debugDescription)
+                return
+            }
+        }
     }
 
 
