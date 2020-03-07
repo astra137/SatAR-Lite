@@ -30,17 +30,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
-        // Load TLEs
-        // TODO: better place to load this data?
-        Cache.loadAll { (error: Error?) in
-            guard error == nil else {
-                print("Error loading satellites")
-                print(error.debugDescription)
-                return
-            }
+        // Load TLEs and radio data
+        // TODO: move this into the starting view and pass data through segues
+        Cache.loadAll().catch { error in
+            print("Error while loading cache")
+            print(error)
         }
     }
 
-
 }
-

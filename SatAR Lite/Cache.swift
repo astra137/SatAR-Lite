@@ -1,17 +1,59 @@
 import Foundation
 import SatelliteKit
+import PromiseKit
+import AwaitKit
+import PMKFoundation
+import CSV
 
+/// Amateur radio satellite with ham radio frequencies and modes
+struct ARS {
+    let commonName: String
+    let noradIndex: Int?
+    let uplink: String
+    let downlink: String
+    let beacon: String
+    let mode: String
+    let callsign: String
+    let status: String
+    
+    init(fromJE9PEL row: [String]) throws {
+        guard row.count == 8 else {
+            throw ARSError.badJE9PEL
+        }
+        
+        commonName = row[0]
+        noradIndex = Int(row[1])
+        uplink = row[2]
+        downlink = row[3]
+        beacon = row[4]
+        mode = row[5]
+        callsign = row[6]
+        status = row[7]
+    }
+    
+    enum ARSError: Error {
+        case badJE9PEL
+    }
+}
+
+/// Temporary global cache struct
+/// TODO: replace this with data in views
 struct Cache {
     
-    /// Cached global instances
-    static var noradIds: [Int] = []
-    static var tles: [Int:TLE] = [:]
-    static var satellites: [Int:Satellite] = [:]
+    /// Cached satellite orbital data
+    static var tles: [TLE] = []
+    
+    /// Cached satellite radio data
+    static var arss: [ARS] = []
+    
+    /// Secret stash of propagators
+    private static var satellites: [Int:Satellite] = [:]
     
     /// Create satellite and propagator if necessary
     static func getSat(noradId: Int) -> Satellite {
         guard let sat = satellites[noradId] else {
-            let sat = Satellite(withTLE: tles[noradId]!)
+            let tle = tles.first { tle in tle.noradIndex == noradId }!
+            let sat = Satellite(withTLE: tle)
             satellites[noradId] = sat
             return sat
         }
@@ -31,69 +73,96 @@ struct Cache {
         let eci = sat.position(julianDays: julian)
         
         // Calc topocentric coords (x south, y east, z up)
-        return eci2top_fixed(julianDays: julian, satVector: eci, geoVector: obs)
+        return eci2top(julianDays: julian, satCel: eci, obsLLA: obs)
     }
-
-    /// Downloads, caches, and loads all TLEs as Satellites
-    static func loadAll(completionBlock: @escaping (Error?) -> Void) {
-        let url = URL(string: "https://celestrak.com/NORAD/elements/amateur.txt")!
-        let file = getDocumentsDirectory().appendingPathComponent("amateur.txt")
-        
-        downloadIfStale(url: url, file: file, age: 12) { (error: Error?) in
-            // Report download error, but don't stop loading from file
-            if let error = error {
-                print(error)
+    
+    /// Download and cache both satellite and radio data
+    static func loadAll() -> Promise<Void> {
+        async {
+            try await(when(fulfilled: [
+                loadTLEs(),
+                loadRadioData()
+            ]))
+            
+            // TODO: debugging
+            // Search for TLEs that are missing radio data
+            for tle in tles {
+                let found = arss.contains { ars in
+                    ars.noradIndex == tle.noradIndex
+                }
+                if !found {
+                    print("loadAll: missing radio: \(tle.noradIndex) \(tle.commonName)")
+                }
+            }
+        }
+    }
+    
+    /// Download and cache just radio data
+    /// http://www.ne.jp/asahi/hamradio/je9pel/satslist.htm
+    /// http://www.dk3wn.info/p/?page_id=29535
+    static func loadRadioData() -> Promise<Void> {
+        async {
+            let url = URL(string: "https://www.ne.jp/asahi/hamradio/je9pel/satslist.csv")!
+            let file = getDocumentsDirectory().appendingPathComponent("satslist.csv")
+            let delimiter: Unicode.Scalar = ";"
+            
+            // Download file, ignoring failure
+            try? await(downloadIfStale(url: url, to: file, minutes: 1))
+            
+            // Load data into cache from saved file
+            arss.removeAll()
+            let stream = InputStream(url: file)!
+            let csv = try CSVReader(stream: stream, delimiter: delimiter)
+            while let row = csv.next() {
+                // Radio details from je9pel might have parse errors
+                if let ars = try? ARS(fromJE9PEL: row) {
+                    arss.append(ars)
+                } else {
+                    print("loadRadioData: warning, ignored \(row)")
+                }
             }
             
-            do {
-                let text: String = try String(contentsOf: file, encoding: .utf8)
-                let lines = text.components(separatedBy: .newlines).filter { (s: String) -> Bool in s.count > 0 }
-                
-                for b in 0..<lines.count / 3 {
-                    let i = b * 3
-                    let tle = try TLE(lines[i], lines[i+1], lines[i+2])
-                    noradIds.append(tle.noradIndex)
-                    tles[tle.noradIndex] = tle
-                }
-                
-                completionBlock(nil)
-            } catch {
-                completionBlock(error)
-            }
+            print("loadRadioData: loaded \(arss.count) ARSs")
         }
     }
     
-    /// Download file only if existing file age in hours to too old
-    static func downloadIfStale(url: URL, file: URL, age: Int, completionBlock: @escaping (Error?) -> Void) {
-        let last = modificationDate(url: file)
-
-        if last == nil || Date().hours(from: last!) >= age {
-            download(url: url, file: file, completionBlock: completionBlock)
-        } else {
-            completionBlock(nil)
+    /// Download and cache just satellites
+    /// https://celestrak.com/NORAD/elements/
+    static func loadTLEs() -> Promise<Void> {
+        return async {
+            let url = URL(string: "https://celestrak.com/NORAD/elements/amateur.txt")!
+            let file = getDocumentsDirectory().appendingPathComponent("amateur.txt")
+            
+            // Download file, ignoring failure
+            try? await(downloadIfStale(url: url, to: file, minutes: 1))
+            
+            // Load data into cache from saved file
+            tles.removeAll()
+            let text: String = try String(contentsOf: file, encoding: .utf8)
+            let lines = text.components(separatedBy: .newlines).filter { (s: String) -> Bool in s.count > 0 }
+            for b in 0..<lines.count / 3 {
+                let i = b * 3
+                // TLEs from Celestrak will always parse
+                // Error is not handled here so it will bubble up if any fail to parse
+                let tle = try TLE(lines[i], lines[i+1], lines[i+2])
+                tles.append(tle)
+            }
+            
+            print("loadTLEs: loaded \(tles.count) TLEs")
         }
     }
     
-    ///
-    static func download(url: URL, file: URL, completionBlock: @escaping (Error?) -> Void) {
-        print("Beginning download")
-        print(url)
-        print(file)
-        
-        URLSession.shared.downloadTask(with: url, completionHandler: { (location, response, error) in
-            guard
-                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                let location = location, error == nil
-                else { return completionBlock(error) }
-
-            do {
-                try? FileManager.default.removeItem(atPath: file.path)
-                try FileManager.default.moveItem(at: location, to: file)
-                completionBlock(nil)
-            } catch {
-                completionBlock(error)
+    /// Download file only if existing file is older than a given limit
+    static func downloadIfStale(url: URL, to: URL, minutes: Int) -> Promise<Void> {
+        return async {
+            let last = modificationDate(url: to)
+            
+            if last == nil || Date().minutes(from: last!) >= minutes {
+                var req = URLRequest(url: url)
+                req.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+                try await(URLSession.shared.downloadTask(.promise, with: req, to: to))
             }
-        }).resume()
+        }
     }
     
     /// Last time file was modified/downloaded
@@ -110,32 +179,8 @@ struct Cache {
     static func getDocumentsDirectory() -> URL {
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     }
-}
-
-
-/// TODO: remove this fixed version once the PR is accepted
-func eci2top_fixed(julianDays: Double, satVector: Vector, geoVector: LatLonAlt) -> Vector {
-    let     latitudeRads = geoVector.lat * deg2rad
-    let     sinLatitude = sin(latitudeRads)
-    let     cosLatitude = cos(latitudeRads)
     
-    let obsVector = geo2eci(julianDays: julianDays, geodetic: geoVector)
-    let obs2sat = satVector - obsVector
-    
-    let     siderealRads = siteMeanSiderealTime(julianDate: julianDays, geoVector.lon) * deg2rad
-    let     sinSidereal = sin(siderealRads)
-    let     cosSidereal = cos(siderealRads)
-    
-    let topS = +sinLatitude * cosSidereal * obs2sat.x +
-        sinLatitude * sinSidereal * obs2sat.y -
-        cosLatitude * obs2sat.z
-    
-    let topE = -sinSidereal * obs2sat.x +
-        cosSidereal * obs2sat.y
-    
-    let topZ = +cosLatitude * cosSidereal * obs2sat.x +
-        cosLatitude * sinSidereal * obs2sat.y +
-        sinLatitude * obs2sat.z
-    
-    return Vector(topS, topE, topZ)
+    enum E: Error {
+        case unexpectedError
+    }
 }

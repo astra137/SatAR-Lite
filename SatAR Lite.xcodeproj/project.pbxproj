@@ -19,6 +19,10 @@
 		8C4A407423F7C9A2001DE698 /* SatAR_LiteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4A407323F7C9A2001DE698 /* SatAR_LiteUITests.swift */; };
 		8C4A408223F7CA58001DE698 /* String-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4A408123F7CA58001DE698 /* String-Extensions.swift */; };
 		8C4A408523F7E311001DE698 /* SatelliteKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8C4A408423F7E311001DE698 /* SatelliteKit */; };
+		8CC6DCCE2411FBA6000A1ADA /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8CC6DCCD2411FBA6000A1ADA /* PromiseKit */; };
+		8CC6DCD12411FC10000A1ADA /* AwaitKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8CC6DCD02411FC10000A1ADA /* AwaitKit */; };
+		8CC6DCD4241261F5000A1ADA /* PMKFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 8CC6DCD3241261F5000A1ADA /* PMKFoundation */; };
+		8CC6DCDA241282C4000A1ADA /* CSV in Frameworks */ = {isa = PBXBuildFile; productRef = 8CC6DCD9241282C4000A1ADA /* CSV */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,7 +67,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CC6DCD4241261F5000A1ADA /* PMKFoundation in Frameworks */,
 				8C4A408523F7E311001DE698 /* SatelliteKit in Frameworks */,
+				8CC6DCDA241282C4000A1ADA /* CSV in Frameworks */,
+				8CC6DCCE2411FBA6000A1ADA /* PromiseKit in Frameworks */,
+				8CC6DCD12411FC10000A1ADA /* AwaitKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,6 +173,10 @@
 			name = "SatAR Lite";
 			packageProductDependencies = (
 				8C4A408423F7E311001DE698 /* SatelliteKit */,
+				8CC6DCCD2411FBA6000A1ADA /* PromiseKit */,
+				8CC6DCD02411FC10000A1ADA /* AwaitKit */,
+				8CC6DCD3241261F5000A1ADA /* PMKFoundation */,
+				8CC6DCD9241282C4000A1ADA /* CSV */,
 			);
 			productName = "SatAR Lite";
 			productReference = 8C4A404E23F7C99F001DE698 /* SatAR Lite.app */;
@@ -240,6 +252,10 @@
 			mainGroup = 8C4A404523F7C99F001DE698;
 			packageReferences = (
 				8C4A408323F7E311001DE698 /* XCRemoteSwiftPackageReference "SatelliteKit" */,
+				8CC6DCCC2411FBA6000A1ADA /* XCRemoteSwiftPackageReference "PromiseKit" */,
+				8CC6DCCF2411FC10000A1ADA /* XCRemoteSwiftPackageReference "AwaitKit" */,
+				8CC6DCD2241261F5000A1ADA /* XCRemoteSwiftPackageReference "Foundation" */,
+				8CC6DCD8241282C4000A1ADA /* XCRemoteSwiftPackageReference "CSV" */,
 			);
 			productRefGroup = 8C4A404F23F7C99F001DE698 /* Products */;
 			projectDirPath = "";
@@ -632,6 +648,38 @@
 				minimumVersion = 1.0.16;
 			};
 		};
+		8CC6DCCC2411FBA6000A1ADA /* XCRemoteSwiftPackageReference "PromiseKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mxcl/PromiseKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.13.1;
+			};
+		};
+		8CC6DCCF2411FC10000A1ADA /* XCRemoteSwiftPackageReference "AwaitKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yannickl/AwaitKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.0;
+			};
+		};
+		8CC6DCD2241261F5000A1ADA /* XCRemoteSwiftPackageReference "Foundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/PromiseKit/Foundation";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.3.4;
+			};
+		};
+		8CC6DCD8241282C4000A1ADA /* XCRemoteSwiftPackageReference "CSV" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yaslab/CSV.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -639,6 +687,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8C4A408323F7E311001DE698 /* XCRemoteSwiftPackageReference "SatelliteKit" */;
 			productName = SatelliteKit;
+		};
+		8CC6DCCD2411FBA6000A1ADA /* PromiseKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8CC6DCCC2411FBA6000A1ADA /* XCRemoteSwiftPackageReference "PromiseKit" */;
+			productName = PromiseKit;
+		};
+		8CC6DCD02411FC10000A1ADA /* AwaitKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8CC6DCCF2411FC10000A1ADA /* XCRemoteSwiftPackageReference "AwaitKit" */;
+			productName = AwaitKit;
+		};
+		8CC6DCD3241261F5000A1ADA /* PMKFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8CC6DCD2241261F5000A1ADA /* XCRemoteSwiftPackageReference "Foundation" */;
+			productName = PMKFoundation;
+		};
+		8CC6DCD9241282C4000A1ADA /* CSV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8CC6DCD8241282C4000A1ADA /* XCRemoteSwiftPackageReference "CSV" */;
+			productName = CSV;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

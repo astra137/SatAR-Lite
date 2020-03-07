@@ -2,12 +2,48 @@
   "object": {
     "pins": [
       {
+        "package": "AwaitKit",
+        "repositoryURL": "https://github.com/yannickl/AwaitKit",
+        "state": {
+          "branch": null,
+          "revision": "743fbf22caa2813436e634fd7bf1fb0ff13751b9",
+          "version": "5.2.0"
+        }
+      },
+      {
+        "package": "CSV.swift",
+        "repositoryURL": "https://github.com/yaslab/CSV.swift",
+        "state": {
+          "branch": null,
+          "revision": "67c5209ae699d5d3ded866de5ee6a6b4005a1b56",
+          "version": "2.4.2"
+        }
+      },
+      {
+        "package": "PMKFoundation",
+        "repositoryURL": "https://github.com/PromiseKit/Foundation",
+        "state": {
+          "branch": null,
+          "revision": "1a276e598dac59489ed904887e0740fa75e571e0",
+          "version": "3.3.4"
+        }
+      },
+      {
+        "package": "PromiseKit",
+        "repositoryURL": "https://github.com/mxcl/PromiseKit",
+        "state": {
+          "branch": null,
+          "revision": "f14f16cc2602afec1030e4f492100d6d43dca544",
+          "version": "6.13.1"
+        }
+      },
+      {
         "package": "SatelliteKit",
         "repositoryURL": "https://github.com/gavineadie/SatelliteKit",
         "state": {
           "branch": null,
-          "revision": "340a578591e2f1af7ef5a58bd2eba947b96f022c",
-          "version": "1.0.16"
+          "revision": "7f363e6ce523ef1f06c37a7617871b300984c7af",
+          "version": "1.0.20"
         }
       }
     ]
