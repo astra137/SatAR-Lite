@@ -83,6 +83,34 @@ struct Cache {
         return eci2top(julianDays: julian, satCel: eci, obsLLA: obs)
     }
     
+    /// WIP: Calculate next topocentric up positive time
+    /// Currently wrong
+    static func getNextRise(noradId: Int, date: Date, lat: Double, lon: Double) -> Date? {
+        let now = date.julianDate
+        let obs = LatLonAlt(lat: lat, lon: lon, alt: 0)
+        let sat = getSat(noradId: noradId)
+        let onemin = 0.003472222222
+        
+        let eci = sat.position(julianDays: now)
+        let top = eci2top(julianDays: now, satCel: eci, obsLLA: obs)
+        
+        // Is satellite already in sky?
+        if top.z >= 0 {
+            return nil
+        }
+       
+        // Find satellite rise
+        for days in stride(from:0.0, through: 5.0, by: onemin) {
+            let eci = sat.position(julianDays: now + days)
+            let top = eci2top(julianDays: now + days, satCel: eci, obsLLA: obs)
+            if top.z > 0 {
+                return Date(julianDate: now + days)
+            }
+        }
+        
+        return nil
+    }
+    
     /// Download and cache both satellite and radio data
     static func loadAll() -> Promise<Void> {
         async {
