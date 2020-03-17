@@ -9,7 +9,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
     var userLocation: CLLocation!
     
     var propagatorTimer: Timer!
-    var satelliteNodes: [Int:SCNNode] = [:]
+    var satelliteNodes: [AmateurRadioSatellite:SCNNode] = [:]
     
     @IBOutlet var sceneView: ARSCNView!
     
@@ -44,8 +44,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         satelliteNodes.removeAll()
         
         // Create and attach nodes for tracked satellites
-        for (id, isTracking) in tracking {
-            if isTracking {
+        for ars in Cache.list {
+            if ars.tracking {
                 // SceneKit/AR coordinates are in meters
                 let plane = SCNPlane(width: 0.05, height: 0.05)
                 plane.firstMaterial!.diffuse.contents = "🛰".image()!
@@ -53,7 +53,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
                 node.constraints = [SCNBillboardConstraint()]
                 
                 // Save and attach node
-                satelliteNodes[id] = node
+                satelliteNodes[ars] = node
                 sceneView.scene.rootNode.addChildNode(node)
             }
         }
@@ -94,9 +94,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDele
         let lat = location.coordinate.latitude
         let lon = location.coordinate.longitude
         
-        for (id, node) in satelliteNodes {
+        for (ars, node) in satelliteNodes {
             // Calculate next topocentric coord (south, east, up)
-            let topo = Cache.getTopo(noradId: id, date: now, lat: lat, lon: lon)
+            let topo = ars.getTopo(date: now, lat: lat, lon: lon)
             let distance = topo.magnitude()
             
             // Place node in world (east, up, south)

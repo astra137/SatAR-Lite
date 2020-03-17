@@ -5,18 +5,18 @@ class SatelliteListViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // List all satellites, even untracked ones
-        return Cache.sats.count
+        return Cache.list.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
         
         // Populate the name and visibility checkmark
-        let sat = Cache.sats[indexPath.row]
+        let sat = Cache.list[indexPath.row]
         
-        cell.textLabel?.text = sat.commonName
+        cell.textLabel?.text = sat.tle.commonName
         
-        if tracking[sat.noradIndex] ?? false {
+        if sat.tracking {
             cell.accessoryType = UITableViewCell.AccessoryType.checkmark
         }
         
@@ -26,12 +26,11 @@ class SatelliteListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // UITableViewCell.AccessoryType.<acc> may be useful
         
-        // Toggle checkmark and visibility
-        let sat = Cache.sats[indexPath.row]
+        // Toggle checkmark by mutating the struct in the list directly
+        let sat = Cache.list[indexPath.row]
+        sat.tracking = !sat.tracking
         
-        tracking[sat.noradIndex] = !(tracking[sat.noradIndex] ?? false)
-        
-        if (tracking[sat.noradIndex]!) {
+        if sat.tracking {
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.checkmark
         } else {
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.none
