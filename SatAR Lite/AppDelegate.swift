@@ -1,8 +1,5 @@
 import UIKit
 
-/// TODO Magic global?
-var tracking: [Int:Bool] = [:]
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
