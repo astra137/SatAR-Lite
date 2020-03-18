@@ -3,7 +3,7 @@ import UIKit
 
 class SatelliteListViewController: UITableViewController, UISearchResultsUpdating {
     
-    var filtered: [AmateurRadioSatellite] = []
+    var filtered: [Int] = []
     
     override func viewDidLoad() {
         let searchController = UISearchController(searchResultsController: nil)
@@ -15,12 +15,14 @@ class SatelliteListViewController: UITableViewController, UISearchResultsUpdatin
         navigationItem.searchController = searchController
         definesPresentationContext = true
         
-        filtered = Cache.list
+        filtered = Cache.list.map { ars in ars.tle.noradIndex }
     }
     
     func filterContentForSearchText(_ searchText: String) {
         // TODO: NSPredicate?
-        filtered = searchText.isEmpty ? Cache.list : Cache.list.filter { ars in
+        filtered = Cache.list.map { ars in ars.tle.noradIndex }
+        filtered = searchText.isEmpty ? filtered : filtered.filter { number in
+            let ars = Cache.list.first { $0.tle.noradIndex == number }!
             return ars.tle.commonName.lowercased().contains(searchText.lowercased())
                 || String(ars.tle.noradIndex).contains(searchText.lowercased())
         }
@@ -45,12 +47,13 @@ class SatelliteListViewController: UITableViewController, UISearchResultsUpdatin
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
         
+        let number = filtered[indexPath.row]
+        let ars = Cache.list.first { $0.tle.noradIndex == number }!
+        
         // Populate the name and visibility checkmark
-        let sat = filtered[indexPath.row]
+        cell.textLabel?.text = ars.tle.commonName
         
-        cell.textLabel?.text = sat.tle.commonName
-        
-        if sat.tracking {
+        if ars.tracking {
             cell.accessoryType = UITableViewCell.AccessoryType.checkmark
         }
         
@@ -60,13 +63,14 @@ class SatelliteListViewController: UITableViewController, UISearchResultsUpdatin
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // UITableViewCell.AccessoryType.<acc> may be useful
         
-        let sat = filtered[indexPath.row]
+        let number = filtered[indexPath.row]
+        let ars = Cache.list.first { $0.tle.noradIndex == number }!
         
         // Toggle checkmark by mutating the class in the list directly
         // This is a reference to the object in the Cache.list, so that will change too
-        sat.tracking = !sat.tracking
+        ars.tracking = !ars.tracking
         
-        if sat.tracking {
+        if ars.tracking {
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.checkmark
         } else {
             tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.none
