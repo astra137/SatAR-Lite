@@ -49,41 +49,58 @@
                     </tabBar>
                     <connections>
                         <segue destination="BV1-FR-VrT" kind="relationship" relationship="viewControllers" id="itH-uB-Y6n"/>
-                        <segue destination="lyM-0w-1G5" kind="relationship" relationship="viewControllers" id="tII-48-uv8"/>
+                        <segue destination="4ti-og-2bM" kind="relationship" relationship="viewControllers" id="7AC-Fj-vwj"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Tw-cr-Evb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-945" y="117"/>
+            <point key="canvasLocation" x="-1036" y="121"/>
         </scene>
-        <!--List-->
-        <scene sceneID="bPm-gj-XG6">
+        <!--List Controller-->
+        <scene sceneID="99h-Nv-ZEx">
             <objects>
-                <tableViewController title="List" id="lyM-0w-1G5" customClass="SatelliteListViewController" customModule="SatAR_Lite" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="8aa-mI-szj">
+                <tableViewController id="bI7-cQ-aEF" userLabel="List Controller" customClass="SatelliteListViewController" customModule="SatAR_Lite" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7Hb-R8-eXn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="a2j-I9-CO8">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="XnX-8k-DHc">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="a2j-I9-CO8" id="h9I-pF-tmS">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XnX-8k-DHc" id="Z40-E3-vRH">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="lyM-0w-1G5" id="1SN-mg-EOZ"/>
-                            <outlet property="delegate" destination="lyM-0w-1G5" id="r0f-36-wDa"/>
+                            <outlet property="dataSource" destination="bI7-cQ-aEF" id="ucP-gv-Bg5"/>
+                            <outlet property="delegate" destination="bI7-cQ-aEF" id="n5V-kW-UbH"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Satellite List" id="Kra-WH-AJ1"/>
+                    <navigationItem key="navigationItem" id="djK-1k-wDt"/>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h7S-Dm-R6Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JoU-iB-h4i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-91" y="528"/>
+            <point key="canvasLocation" x="767" y="477"/>
+        </scene>
+        <!--List Navigation-->
+        <scene sceneID="4F7-cv-0Ik">
+            <objects>
+                <navigationController id="4ti-og-2bM" userLabel="List Navigation" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Satellite List" id="qZr-dp-9sq"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="emV-RT-vPX">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="bI7-cQ-aEF" kind="relationship" relationship="rootViewController" id="gxx-en-tmj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2ra-Ao-rdC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-104" y="477"/>
         </scene>
     </scenes>
 </document>
