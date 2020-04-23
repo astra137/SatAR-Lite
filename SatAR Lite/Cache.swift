@@ -48,7 +48,7 @@ struct JE3PEL {
 class AmateurRadioSatellite: Hashable {
     let tle: TLE
     let radios: [JE3PEL]
-    var tracking: Bool = false
+    var tracking: Bool = true
     
     private let sat: Satellite
     
@@ -86,18 +86,15 @@ class AmateurRadioSatellite: Hashable {
 /// TODO: replace this with data in views
 struct Cache {
     
-    /// The Cache
-    static var list: [AmateurRadioSatellite] = []
-    
     /// Download and cache both satellite and radio data
-    static func loadAll() -> Promise<Void> {
+    static func loadAll() -> Promise<[AmateurRadioSatellite]> {
         async {
             let tles = try await(loadTLEs())
             let radios = try await(loadRadioData())
             
             // Treat each TLE as unique satellite, find related radios or ignore
-            // TODO: eventually return a fresh list instead of mutating static global
-            list.removeAll()
+            var list: [AmateurRadioSatellite] = []
+            
             for tle in tles {
                 let related = radios.filter { record in record.noradIndex == tle.noradIndex }
                 if related.count > 0 {
@@ -110,12 +107,14 @@ struct Cache {
             // Debug: Search for radios with missing orbital data
             var untrackable = 0
             for record in radios {
-                if !tles.contains { tle in tle.noradIndex == record.noradIndex } {
+                if !tles.contains(where: { tle in tle.noradIndex == record.noradIndex }) {
                     untrackable += 1
                 }
             }
             
             print("loadAll: unable to find \(untrackable) TLEs")
+            
+            return list
         }
     }
     

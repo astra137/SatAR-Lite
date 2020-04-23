@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C18F72E245120A000D7EA99 /* RadioTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C18F72D245120A000D7EA99 /* RadioTextViewController.swift */; };
 		8C231D2E23FA39EB00ECC935 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C231D2D23FA39EB00ECC935 /* Cache.swift */; };
 		8C231D3223FA7CAC00ECC935 /* Date-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C231D3123FA7CAC00ECC935 /* Date-Extensions.swift */; };
 		8C231D3623FAA6EB00ECC935 /* SatelliteListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C231D3523FAA6EB00ECC935 /* SatelliteListTableViewController.swift */; };
@@ -19,6 +20,7 @@
 		8C4A407423F7C9A2001DE698 /* SatAR_LiteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4A407323F7C9A2001DE698 /* SatAR_LiteUITests.swift */; };
 		8C4A408223F7CA58001DE698 /* String-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4A408123F7CA58001DE698 /* String-Extensions.swift */; };
 		8C4A408523F7E311001DE698 /* SatelliteKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8C4A408423F7E311001DE698 /* SatelliteKit */; };
+		8C74F6FC244D1B7E0090B63B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C74F6FB244D1B7E0090B63B /* TabBarController.swift */; };
 		8CC6DCCE2411FBA6000A1ADA /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8CC6DCCD2411FBA6000A1ADA /* PromiseKit */; };
 		8CC6DCD12411FC10000A1ADA /* AwaitKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8CC6DCD02411FC10000A1ADA /* AwaitKit */; };
 		8CC6DCD4241261F5000A1ADA /* PMKFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 8CC6DCD3241261F5000A1ADA /* PMKFoundation */; };
@@ -43,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8C18F72D245120A000D7EA99 /* RadioTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioTextViewController.swift; sourceTree = "<group>"; };
 		8C231D2D23FA39EB00ECC935 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		8C231D3123FA7CAC00ECC935 /* Date-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date-Extensions.swift"; sourceTree = "<group>"; };
 		8C231D3523FAA6EB00ECC935 /* SatelliteListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SatelliteListTableViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +63,7 @@
 		8C4A407323F7C9A2001DE698 /* SatAR_LiteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SatAR_LiteUITests.swift; sourceTree = "<group>"; };
 		8C4A407523F7C9A2001DE698 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C4A408123F7CA58001DE698 /* String-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String-Extensions.swift"; sourceTree = "<group>"; };
+		8C74F6FB244D1B7E0090B63B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +137,8 @@
 				8C4A405C23F7C9A1001DE698 /* LaunchScreen.storyboard */,
 				8C4A405F23F7C9A1001DE698 /* Info.plist */,
 				8C231D3523FAA6EB00ECC935 /* SatelliteListTableViewController.swift */,
+				8C74F6FB244D1B7E0090B63B /* TabBarController.swift */,
+				8C18F72D245120A000D7EA99 /* RadioTextViewController.swift */,
 			);
 			path = "SatAR Lite";
 			sourceTree = "<group>";
@@ -303,7 +309,9 @@
 				8C4A408223F7CA58001DE698 /* String-Extensions.swift in Sources */,
 				8C231D2E23FA39EB00ECC935 /* Cache.swift in Sources */,
 				8C4A405623F7C99F001DE698 /* ViewController.swift in Sources */,
+				8C18F72E245120A000D7EA99 /* RadioTextViewController.swift in Sources */,
 				8C231D3223FA7CAC00ECC935 /* Date-Extensions.swift in Sources */,
+				8C74F6FC244D1B7E0090B63B /* TabBarController.swift in Sources */,
 				8C231D3623FAA6EB00ECC935 /* SatelliteListTableViewController.swift in Sources */,
 				8C4A405223F7C99F001DE698 /* AppDelegate.swift in Sources */,
 			);

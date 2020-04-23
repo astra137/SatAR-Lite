@@ -3,6 +3,10 @@ import UIKit
 
 class SatelliteListViewController: UITableViewController, UISearchResultsUpdating {
     
+    var satellites: [AmateurRadioSatellite] {
+        get { (tabBarController as! TabBarController).satellites }
+    }
+    
     var filtered: [Int] = []
     
     override func viewDidLoad() {
@@ -15,14 +19,14 @@ class SatelliteListViewController: UITableViewController, UISearchResultsUpdatin
         navigationItem.searchController = searchController
         definesPresentationContext = true
         
-        filtered = Cache.list.map { ars in ars.tle.noradIndex }
+        filtered = satellites.map { ars in ars.tle.noradIndex }
     }
     
     func filterContentForSearchText(_ searchText: String) {
         // TODO: NSPredicate?
-        filtered = Cache.list.map { ars in ars.tle.noradIndex }
+        filtered = satellites.map { ars in ars.tle.noradIndex }
         filtered = searchText.isEmpty ? filtered : filtered.filter { number in
-            let ars = Cache.list.first { $0.tle.noradIndex == number }!
+            let ars = satellites.first { $0.tle.noradIndex == number }!
             return ars.tle.commonName.lowercased().contains(searchText.lowercased())
                 || String(ars.tle.noradIndex).contains(searchText.lowercased())
         }
@@ -48,7 +52,7 @@ class SatelliteListViewController: UITableViewController, UISearchResultsUpdatin
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
         
         let number = filtered[indexPath.row]
-        let ars = Cache.list.first { $0.tle.noradIndex == number }!
+        let ars = satellites.first { $0.tle.noradIndex == number }!
         
         // Populate the name and visibility checkmark
         cell.textLabel?.text = ars.tle.commonName
@@ -64,7 +68,7 @@ class SatelliteListViewController: UITableViewController, UISearchResultsUpdatin
         // UITableViewCell.AccessoryType.<acc> may be useful
         
         let number = filtered[indexPath.row]
-        let ars = Cache.list.first { $0.tle.noradIndex == number }!
+        let ars = satellites.first { $0.tle.noradIndex == number }!
         
         // Toggle checkmark by mutating the class in the list directly
         // This is a reference to the object in the Cache.list, so that will change too
