@@ -1,0 +1,722 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8C18F72E245120A000D7EA99 /* RadioTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C18F72D245120A000D7EA99 /* RadioTextViewController.swift */; };
+		8C231D2E23FA39EB00ECC935 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C231D2D23FA39EB00ECC935 /* Cache.swift */; };
+		8C231D3223FA7CAC00ECC935 /* Date-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C231D3123FA7CAC00ECC935 /* Date-Extensions.swift */; };
+		8C231D3623FAA6EB00ECC935 /* SatelliteListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C231D3523FAA6EB00ECC935 /* SatelliteListTableViewController.swift */; };
+		8C4A405223F7C99F001DE698 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4A405123F7C99F001DE698 /* AppDelegate.swift */; };
+		8C4A405623F7C99F001DE698 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4A405523F7C99F001DE698 /* ViewController.swift */; };
+		8C4A405923F7C99F001DE698 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C4A405723F7C99F001DE698 /* Main.storyboard */; };
+		8C4A405B23F7C9A1001DE698 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C4A405A23F7C9A1001DE698 /* Assets.xcassets */; };
+		8C4A405E23F7C9A1001DE698 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C4A405C23F7C9A1001DE698 /* LaunchScreen.storyboard */; };
+		8C4A406923F7C9A2001DE698 /* SatAR_LiteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4A406823F7C9A2001DE698 /* SatAR_LiteTests.swift */; };
+		8C4A407423F7C9A2001DE698 /* SatAR_LiteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4A407323F7C9A2001DE698 /* SatAR_LiteUITests.swift */; };
+		8C4A408223F7CA58001DE698 /* String-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4A408123F7CA58001DE698 /* String-Extensions.swift */; };
+		8C4A408523F7E311001DE698 /* SatelliteKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8C4A408423F7E311001DE698 /* SatelliteKit */; };
+		8C74F6FC244D1B7E0090B63B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C74F6FB244D1B7E0090B63B /* TabBarController.swift */; };
+		8CC6DCCE2411FBA6000A1ADA /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8CC6DCCD2411FBA6000A1ADA /* PromiseKit */; };
+		8CC6DCD12411FC10000A1ADA /* AwaitKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8CC6DCD02411FC10000A1ADA /* AwaitKit */; };
+		8CC6DCD4241261F5000A1ADA /* PMKFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 8CC6DCD3241261F5000A1ADA /* PMKFoundation */; };
+		8CC6DCDA241282C4000A1ADA /* CSV in Frameworks */ = {isa = PBXBuildFile; productRef = 8CC6DCD9241282C4000A1ADA /* CSV */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8C4A406523F7C9A2001DE698 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8C4A404623F7C99F001DE698 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8C4A404D23F7C99F001DE698;
+			remoteInfo = "SatAR Lite";
+		};
+		8C4A407023F7C9A2001DE698 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8C4A404623F7C99F001DE698 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8C4A404D23F7C99F001DE698;
+			remoteInfo = "SatAR Lite";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8C18F72D245120A000D7EA99 /* RadioTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioTextViewController.swift; sourceTree = "<group>"; };
+		8C231D2D23FA39EB00ECC935 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		8C231D3123FA7CAC00ECC935 /* Date-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date-Extensions.swift"; sourceTree = "<group>"; };
+		8C231D3523FAA6EB00ECC935 /* SatelliteListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SatelliteListTableViewController.swift; sourceTree = "<group>"; };
+		8C4A404E23F7C99F001DE698 /* SatAR Lite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SatAR Lite.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C4A405123F7C99F001DE698 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8C4A405523F7C99F001DE698 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8C4A405823F7C99F001DE698 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8C4A405A23F7C9A1001DE698 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8C4A405D23F7C9A1001DE698 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8C4A405F23F7C9A1001DE698 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8C4A406423F7C9A2001DE698 /* SatAR LiteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SatAR LiteTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C4A406823F7C9A2001DE698 /* SatAR_LiteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SatAR_LiteTests.swift; sourceTree = "<group>"; };
+		8C4A406A23F7C9A2001DE698 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8C4A406F23F7C9A2001DE698 /* SatAR LiteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SatAR LiteUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C4A407323F7C9A2001DE698 /* SatAR_LiteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SatAR_LiteUITests.swift; sourceTree = "<group>"; };
+		8C4A407523F7C9A2001DE698 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8C4A408123F7CA58001DE698 /* String-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String-Extensions.swift"; sourceTree = "<group>"; };
+		8C74F6FB244D1B7E0090B63B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8C4A404B23F7C99F001DE698 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CC6DCD4241261F5000A1ADA /* PMKFoundation in Frameworks */,
+				8C4A408523F7E311001DE698 /* SatelliteKit in Frameworks */,
+				8CC6DCDA241282C4000A1ADA /* CSV in Frameworks */,
+				8CC6DCCE2411FBA6000A1ADA /* PromiseKit in Frameworks */,
+				8CC6DCD12411FC10000A1ADA /* AwaitKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C4A406123F7C9A2001DE698 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C4A406C23F7C9A2001DE698 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8C231D3023FA7C9C00ECC935 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8C4A408123F7CA58001DE698 /* String-Extensions.swift */,
+				8C231D3123FA7CAC00ECC935 /* Date-Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8C4A404523F7C99F001DE698 = {
+			isa = PBXGroup;
+			children = (
+				8C4A405023F7C99F001DE698 /* SatAR Lite */,
+				8C4A406723F7C9A2001DE698 /* SatAR LiteTests */,
+				8C4A407223F7C9A2001DE698 /* SatAR LiteUITests */,
+				8C4A404F23F7C99F001DE698 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8C4A404F23F7C99F001DE698 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8C4A404E23F7C99F001DE698 /* SatAR Lite.app */,
+				8C4A406423F7C9A2001DE698 /* SatAR LiteTests.xctest */,
+				8C4A406F23F7C9A2001DE698 /* SatAR LiteUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8C4A405023F7C99F001DE698 /* SatAR Lite */ = {
+			isa = PBXGroup;
+			children = (
+				8C231D3023FA7C9C00ECC935 /* Extensions */,
+				8C231D2D23FA39EB00ECC935 /* Cache.swift */,
+				8C4A405123F7C99F001DE698 /* AppDelegate.swift */,
+				8C4A405523F7C99F001DE698 /* ViewController.swift */,
+				8C4A405723F7C99F001DE698 /* Main.storyboard */,
+				8C4A405A23F7C9A1001DE698 /* Assets.xcassets */,
+				8C4A405C23F7C9A1001DE698 /* LaunchScreen.storyboard */,
+				8C4A405F23F7C9A1001DE698 /* Info.plist */,
+				8C231D3523FAA6EB00ECC935 /* SatelliteListTableViewController.swift */,
+				8C74F6FB244D1B7E0090B63B /* TabBarController.swift */,
+				8C18F72D245120A000D7EA99 /* RadioTextViewController.swift */,
+			);
+			path = "SatAR Lite";
+			sourceTree = "<group>";
+		};
+		8C4A406723F7C9A2001DE698 /* SatAR LiteTests */ = {
+			isa = PBXGroup;
+			children = (
+				8C4A406823F7C9A2001DE698 /* SatAR_LiteTests.swift */,
+				8C4A406A23F7C9A2001DE698 /* Info.plist */,
+			);
+			path = "SatAR LiteTests";
+			sourceTree = "<group>";
+		};
+		8C4A407223F7C9A2001DE698 /* SatAR LiteUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8C4A407323F7C9A2001DE698 /* SatAR_LiteUITests.swift */,
+				8C4A407523F7C9A2001DE698 /* Info.plist */,
+			);
+			path = "SatAR LiteUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8C4A404D23F7C99F001DE698 /* SatAR Lite */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8C4A407823F7C9A2001DE698 /* Build configuration list for PBXNativeTarget "SatAR Lite" */;
+			buildPhases = (
+				8C4A404A23F7C99F001DE698 /* Sources */,
+				8C4A404B23F7C99F001DE698 /* Frameworks */,
+				8C4A404C23F7C99F001DE698 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SatAR Lite";
+			packageProductDependencies = (
+				8C4A408423F7E311001DE698 /* SatelliteKit */,
+				8CC6DCCD2411FBA6000A1ADA /* PromiseKit */,
+				8CC6DCD02411FC10000A1ADA /* AwaitKit */,
+				8CC6DCD3241261F5000A1ADA /* PMKFoundation */,
+				8CC6DCD9241282C4000A1ADA /* CSV */,
+			);
+			productName = "SatAR Lite";
+			productReference = 8C4A404E23F7C99F001DE698 /* SatAR Lite.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8C4A406323F7C9A2001DE698 /* SatAR LiteTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8C4A407B23F7C9A2001DE698 /* Build configuration list for PBXNativeTarget "SatAR LiteTests" */;
+			buildPhases = (
+				8C4A406023F7C9A2001DE698 /* Sources */,
+				8C4A406123F7C9A2001DE698 /* Frameworks */,
+				8C4A406223F7C9A2001DE698 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8C4A406623F7C9A2001DE698 /* PBXTargetDependency */,
+			);
+			name = "SatAR LiteTests";
+			productName = "SatAR LiteTests";
+			productReference = 8C4A406423F7C9A2001DE698 /* SatAR LiteTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8C4A406E23F7C9A2001DE698 /* SatAR LiteUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8C4A407E23F7C9A2001DE698 /* Build configuration list for PBXNativeTarget "SatAR LiteUITests" */;
+			buildPhases = (
+				8C4A406B23F7C9A2001DE698 /* Sources */,
+				8C4A406C23F7C9A2001DE698 /* Frameworks */,
+				8C4A406D23F7C9A2001DE698 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8C4A407123F7C9A2001DE698 /* PBXTargetDependency */,
+			);
+			name = "SatAR LiteUITests";
+			productName = "SatAR LiteUITests";
+			productReference = 8C4A406F23F7C9A2001DE698 /* SatAR LiteUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8C4A404623F7C99F001DE698 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "";
+				TargetAttributes = {
+					8C4A404D23F7C99F001DE698 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					8C4A406323F7C9A2001DE698 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = 8C4A404D23F7C99F001DE698;
+					};
+					8C4A406E23F7C9A2001DE698 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = 8C4A404D23F7C99F001DE698;
+					};
+				};
+			};
+			buildConfigurationList = 8C4A404923F7C99F001DE698 /* Build configuration list for PBXProject "SatAR Lite" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8C4A404523F7C99F001DE698;
+			packageReferences = (
+				8C4A408323F7E311001DE698 /* XCRemoteSwiftPackageReference "SatelliteKit" */,
+				8CC6DCCC2411FBA6000A1ADA /* XCRemoteSwiftPackageReference "PromiseKit" */,
+				8CC6DCCF2411FC10000A1ADA /* XCRemoteSwiftPackageReference "AwaitKit" */,
+				8CC6DCD2241261F5000A1ADA /* XCRemoteSwiftPackageReference "Foundation" */,
+				8CC6DCD8241282C4000A1ADA /* XCRemoteSwiftPackageReference "CSV" */,
+			);
+			productRefGroup = 8C4A404F23F7C99F001DE698 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8C4A404D23F7C99F001DE698 /* SatAR Lite */,
+				8C4A406323F7C9A2001DE698 /* SatAR LiteTests */,
+				8C4A406E23F7C9A2001DE698 /* SatAR LiteUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8C4A404C23F7C99F001DE698 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C4A405E23F7C9A1001DE698 /* LaunchScreen.storyboard in Resources */,
+				8C4A405B23F7C9A1001DE698 /* Assets.xcassets in Resources */,
+				8C4A405923F7C99F001DE698 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C4A406223F7C9A2001DE698 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C4A406D23F7C9A2001DE698 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8C4A404A23F7C99F001DE698 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C4A408223F7CA58001DE698 /* String-Extensions.swift in Sources */,
+				8C231D2E23FA39EB00ECC935 /* Cache.swift in Sources */,
+				8C4A405623F7C99F001DE698 /* ViewController.swift in Sources */,
+				8C18F72E245120A000D7EA99 /* RadioTextViewController.swift in Sources */,
+				8C231D3223FA7CAC00ECC935 /* Date-Extensions.swift in Sources */,
+				8C74F6FC244D1B7E0090B63B /* TabBarController.swift in Sources */,
+				8C231D3623FAA6EB00ECC935 /* SatelliteListTableViewController.swift in Sources */,
+				8C4A405223F7C99F001DE698 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C4A406023F7C9A2001DE698 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C4A406923F7C9A2001DE698 /* SatAR_LiteTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C4A406B23F7C9A2001DE698 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C4A407423F7C9A2001DE698 /* SatAR_LiteUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8C4A406623F7C9A2001DE698 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8C4A404D23F7C99F001DE698 /* SatAR Lite */;
+			targetProxy = 8C4A406523F7C9A2001DE698 /* PBXContainerItemProxy */;
+		};
+		8C4A407123F7C9A2001DE698 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8C4A404D23F7C99F001DE698 /* SatAR Lite */;
+			targetProxy = 8C4A407023F7C9A2001DE698 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8C4A405723F7C99F001DE698 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8C4A405823F7C99F001DE698 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8C4A405C23F7C9A1001DE698 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8C4A405D23F7C9A1001DE698 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8C4A407623F7C9A2001DE698 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8C4A407723F7C9A2001DE698 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8C4A407923F7C9A2001DE698 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XNTSB5R23W;
+				INFOPLIST_FILE = "SatAR Lite/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "me.starburn.SatAR-Lite";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8C4A407A23F7C9A2001DE698 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XNTSB5R23W;
+				INFOPLIST_FILE = "SatAR Lite/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "me.starburn.SatAR-Lite";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		8C4A407C23F7C9A2001DE698 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XNTSB5R23W;
+				INFOPLIST_FILE = "SatAR LiteTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "me.starburn.SatAR-LiteTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SatAR Lite.app/SatAR Lite";
+			};
+			name = Debug;
+		};
+		8C4A407D23F7C9A2001DE698 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XNTSB5R23W;
+				INFOPLIST_FILE = "SatAR LiteTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "me.starburn.SatAR-LiteTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SatAR Lite.app/SatAR Lite";
+			};
+			name = Release;
+		};
+		8C4A407F23F7C9A2001DE698 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XNTSB5R23W;
+				INFOPLIST_FILE = "SatAR LiteUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "me.starburn.SatAR-LiteUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "SatAR Lite";
+			};
+			name = Debug;
+		};
+		8C4A408023F7C9A2001DE698 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XNTSB5R23W;
+				INFOPLIST_FILE = "SatAR LiteUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "me.starburn.SatAR-LiteUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "SatAR Lite";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8C4A404923F7C99F001DE698 /* Build configuration list for PBXProject "SatAR Lite" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C4A407623F7C9A2001DE698 /* Debug */,
+				8C4A407723F7C9A2001DE698 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8C4A407823F7C9A2001DE698 /* Build configuration list for PBXNativeTarget "SatAR Lite" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C4A407923F7C9A2001DE698 /* Debug */,
+				8C4A407A23F7C9A2001DE698 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8C4A407B23F7C9A2001DE698 /* Build configuration list for PBXNativeTarget "SatAR LiteTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C4A407C23F7C9A2001DE698 /* Debug */,
+				8C4A407D23F7C9A2001DE698 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8C4A407E23F7C9A2001DE698 /* Build configuration list for PBXNativeTarget "SatAR LiteUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C4A407F23F7C9A2001DE698 /* Debug */,
+				8C4A408023F7C9A2001DE698 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8C4A408323F7E311001DE698 /* XCRemoteSwiftPackageReference "SatelliteKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gavineadie/SatelliteKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.16;
+			};
+		};
+		8CC6DCCC2411FBA6000A1ADA /* XCRemoteSwiftPackageReference "PromiseKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mxcl/PromiseKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.13.1;
+			};
+		};
+		8CC6DCCF2411FC10000A1ADA /* XCRemoteSwiftPackageReference "AwaitKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yannickl/AwaitKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.0;
+			};
+		};
+		8CC6DCD2241261F5000A1ADA /* XCRemoteSwiftPackageReference "Foundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/PromiseKit/Foundation";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.3.4;
+			};
+		};
+		8CC6DCD8241282C4000A1ADA /* XCRemoteSwiftPackageReference "CSV" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yaslab/CSV.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8C4A408423F7E311001DE698 /* SatelliteKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8C4A408323F7E311001DE698 /* XCRemoteSwiftPackageReference "SatelliteKit" */;
+			productName = SatelliteKit;
+		};
+		8CC6DCCD2411FBA6000A1ADA /* PromiseKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8CC6DCCC2411FBA6000A1ADA /* XCRemoteSwiftPackageReference "PromiseKit" */;
+			productName = PromiseKit;
+		};
+		8CC6DCD02411FC10000A1ADA /* AwaitKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8CC6DCCF2411FC10000A1ADA /* XCRemoteSwiftPackageReference "AwaitKit" */;
+			productName = AwaitKit;
+		};
+		8CC6DCD3241261F5000A1ADA /* PMKFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8CC6DCD2241261F5000A1ADA /* XCRemoteSwiftPackageReference "Foundation" */;
+			productName = PMKFoundation;
+		};
+		8CC6DCD9241282C4000A1ADA /* CSV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8CC6DCD8241282C4000A1ADA /* XCRemoteSwiftPackageReference "CSV" */;
+			productName = CSV;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 8C4A404623F7C99F001DE698 /* Project object */;
+}
